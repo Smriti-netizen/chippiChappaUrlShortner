@@ -11,7 +11,7 @@ public class ShortenUrlWithAliasRequest {
     @NotBlank(message = "Original URL is required")
     private String originalUrl;
     
-    @Pattern(regexp = "^[a-zA-Z0-9_-]+$", message = "Custom url can only contain letters, numbers, hyphens, and underscores")
+    @Pattern(regexp = "^[a-zA-Z0-9_-]*$", message = "Custom url can only contain letters, numbers, hyphens, and underscores")
     private String customAlias;
     
     private Integer expiresInDays;

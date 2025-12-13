@@ -7,6 +7,8 @@ import java.util.Random;
 public class ShortCodeGenerator {
     
     private static final String LETTERS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    private static final int MIN_LENGTH = 4;
+    private static final int MAX_LENGTH = 10;
     private static final int RANDOM_LENGTH = 6;
     private final Random random = new Random();
     

@@ -81,7 +81,7 @@ public class UrlShortenerService {
         String shortCode;
         int attempts = 0;
         do {
-            shortCode = codeGenerator.generateShortCode();
+            shortCode = codeGenerator.generateShortCode(6);
             attempts++;
             if (attempts > 10) {
                 // If too many attempts, add more randomness
