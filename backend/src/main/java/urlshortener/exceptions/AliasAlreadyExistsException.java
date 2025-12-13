@@ -6,3 +6,4 @@ public class AliasAlreadyExistsException extends BaseException {
         super(message);
     }
 }
+

@@ -4,7 +4,9 @@ import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import urlshortener.dto.*;
+import urlshortener.dto.ShortUrlRequest;
+import urlshortener.dto.ShortUrlResponse;
+import urlshortener.dto.ShortUrlCustomizationRequest;
 import urlshortener.entity.UrlMapping;
 import urlshortener.service.UrlShortenerService;
 
@@ -20,10 +22,10 @@ public class UrlShortenerController {
     }
     
     @PostMapping("/shorten")
-    public ResponseEntity<ShortenUrlResponse> shortenUrl(@Valid @RequestBody ShortenUrlRequest request) {
+    public ResponseEntity<ShortUrlResponse> shortenUrl(@Valid @RequestBody ShortUrlRequest request) {
         UrlMapping mapping = urlShortenerService.shortenUrl(request.getOriginalUrl());
         
-        ShortenUrlResponse response = new ShortenUrlResponse(
+        ShortUrlResponse response = new ShortUrlResponse(
             mapping.getShortCode(),
             urlShortenerService.getShortUrl(mapping.getShortCode()),
             mapping.getOriginalUrl(),
@@ -36,8 +38,8 @@ public class UrlShortenerController {
     }
     
     @PostMapping("/shorten/custom")
-    public ResponseEntity<ShortenUrlResponse> shortenUrlWithAlias(
-            @Valid @RequestBody ShortenUrlWithAliasRequest request) {
+    public ResponseEntity<ShortUrlResponse> shortenUrlWithAlias(
+            @Valid @RequestBody ShortUrlCustomizationRequest request) {
         
         UrlMapping mapping;
         
@@ -50,7 +52,7 @@ public class UrlShortenerController {
             mapping = urlShortenerService.shortenUrl(request.getOriginalUrl());
         }
         
-        ShortenUrlResponse response = new ShortenUrlResponse(
+        ShortUrlResponse response = new ShortUrlResponse(
             mapping.getShortCode(),
             urlShortenerService.getShortUrl(mapping.getShortCode()),
             mapping.getOriginalUrl(),
@@ -62,3 +64,4 @@ public class UrlShortenerController {
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 }
+

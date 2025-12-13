@@ -17,3 +17,4 @@ public interface UrlMappingRepository extends JpaRepository<UrlMapping, Long> {
     
     boolean existsByCustomAlias(String customAlias);
 }
+

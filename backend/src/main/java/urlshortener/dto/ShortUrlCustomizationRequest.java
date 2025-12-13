@@ -6,7 +6,7 @@ import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 @Data
-public class ShortenUrlWithAliasRequest {
+public class ShortUrlCustomizationRequest {
     
     @NotBlank(message = "Original URL is required")
     private String originalUrl;
