@@ -12,7 +12,6 @@ import urlshortener.service.UrlShortenerService;
 
 @RestController
 @RequestMapping("/api")
-@CrossOrigin(origins = {"http://localhost:5173", "https://yourusername.github.io"})
 public class UrlShortenerController {
     
     private final UrlShortenerService urlShortenerService;

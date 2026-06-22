@@ -15,7 +15,10 @@ export const shortenUrl = async (originalUrl) => {
     const response = await api.post('/shorten', { originalUrl });
     return response.data;
   } catch (error) {
-    throw error.response?.data || error.message;
+    const data = error.response?.data;
+    if (data?.message) throw data.message;
+    if (typeof data === 'string') throw data;
+    throw error.message || 'Request failed';
   }
 };
 
@@ -28,6 +31,9 @@ export const shortenUrlWithAlias = async (originalUrl, customAlias) => {
     });
     return response.data;
   } catch (error) {
-    throw error.response?.data || error.message;
+    const data = error.response?.data;
+    if (data?.message) throw data.message;
+    if (typeof data === 'string') throw data;
+    throw error.message || 'Request failed';
   }
 };

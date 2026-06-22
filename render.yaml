@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: chippi-chappa-api
+    runtime: java
+    rootDir: backend
+    buildCommand: mvn clean package -DskipTests
+    startCommand: java -jar target/chippi-chappa-url-shortener-1.0.0.jar --spring.profiles.active=prod
+    healthCheckPath: /api/health
+    envVars:
+      - key: SPRING_PROFILES_ACTIVE
+        value: prod
+      - key: FRONTEND_URL
+        value: https://smriti-netizen.github.io
+      - key: APP_BASE_URL
+        sync: false
+      - key: SPRING_DATASOURCE_URL
+        sync: false
+      - key: SPRING_DATASOURCE_USERNAME
+        sync: false
+      - key: SPRING_DATASOURCE_PASSWORD
+        sync: false
